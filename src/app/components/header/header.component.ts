@@ -6,7 +6,9 @@ import { faHurricane } from '@fortawesome/free-solid-svg-icons';
 @Component({
   template: `
     <header>
-      <fa-icon [icon]=faHurricane />
+      <fa-icon
+        [icon]=faHurricane
+      />
       <span>Observables</span>
     </header>
   `,

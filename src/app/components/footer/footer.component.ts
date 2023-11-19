@@ -6,9 +6,15 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 @Component({
   template: `
     <footer>
-      <div class="footer__container">
-        <div class="footer__title">
-          <fa-icon [icon]="faPeopleGroup" />
+      <div
+        class="footer__container"
+      >
+        <div
+          class="footer__title"
+        >
+          <fa-icon
+            [icon]="faPeopleGroup"
+          />
           <span>Equipe</span>
         </div>
         <span>Heitor Fidelis</span>
