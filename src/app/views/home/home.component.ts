@@ -75,11 +75,13 @@ export class HomeComponent implements OnInit {
   }
 
   getNameErrorMessage(): string {
+    console.log(this.name.errors)
+
     if (this.name.hasError('required')) {
       return 'Insira um nome!';
     }
 
-    return this.name.hasError('minLength') ? 'Insira um nome de no mín. 3 letras!' : '';
+    return this.name.hasError('minlength') ? 'Insira um nome de no mín. 3 letras!' : '';
   }
 
   getRoleErrorMessage(): string {
