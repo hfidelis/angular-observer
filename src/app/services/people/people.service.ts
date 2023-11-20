@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, delay } from 'rxjs';
 import { People } from '../../models/People.model';
 
 @Injectable({
@@ -16,6 +16,9 @@ export class PeopleService {
 
   getPeople(): Observable<People[]> {
     return this.http.get<People[]>(this.baseUrl)
+                    .pipe(
+                      delay(2000)
+                    )
   }
 
   getPeopleById(id: number | string): Observable<People> | undefined {
