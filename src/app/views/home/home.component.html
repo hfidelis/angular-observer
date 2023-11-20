@@ -1,0 +1,115 @@
+<main>
+  <section
+    class="peoples__section"
+  >
+    @if (people$ | async; as peoples) {
+      <h2
+        class="people__title"
+      >
+        Pessoas
+      </h2>
+      @for (people of peoples; track people.id) {
+        <mat-card
+          class="example-card"
+        >
+          <mat-card-header
+            color="secondary"
+          >
+            <div
+              mat-card-avatar
+              class="example-header-image"
+            >
+            </div>
+            <mat-card-title>
+              {{ people.name }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{ people.role }}
+            </mat-card-subtitle>
+
+            <button
+              type="button"
+              class="delete__button"
+              (click)="remove(people.id)"
+            >
+              <fa-icon [icon]="faTrashCan"/>
+            </button>
+          </mat-card-header>
+        </mat-card>
+      } @empty {
+        <h2
+          class="people__title"
+        >
+          Nenhuma pessoa cadastrada.
+        </h2>
+      }
+    } @else {
+      <app-spinner />
+    }
+  </section>
+
+  <section
+    class="forms__section"
+  >
+    <h2
+      class="people__title"
+    >
+      Cadastro
+    </h2>
+
+    <form
+      class="people__form"
+      [formGroup]="peopleForm"
+      (submit)="onSubmit()"
+      #formDirective="ngForm"
+    >
+        <mat-form-field
+          class="form__field"
+        >
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            placeholder="Seu Nome"
+            formControlName="name"
+            required
+          >
+          <mat-error
+            *ngIf="name.invalid"
+          >
+            {{ getNameErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          class="form__field"
+        >
+          <mat-label>Cargo</mat-label>
+          <mat-select
+            formControlName="role"
+            required
+          >
+            <mat-option
+              *ngFor="let option of roleOptions"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="role.invalid"
+          >
+            {{ getRoleErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+
+      <button
+        type="submit"
+        class="form__button"
+        mat-raised-button
+        [disabled]="role.invalid || name.invalid"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </section>
+</main>

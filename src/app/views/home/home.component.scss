@@ -1,0 +1,94 @@
+@import 'variables.scss';
+@import 'mixins.scss';
+
+main {
+  @include flexible($direction: row, $justify: space-between);
+  width: 100%;
+  min-height: 80vh;
+  padding: 2.375rem 5.375rem;
+
+  background-color: $black;
+}
+
+.peoples__section {
+  @include flexible($direction: column);
+  gap: .575rem;
+  width: 50%;
+  animation: fadeIn 500ms ease-in-out;
+
+  &:has(.example-card:hover) .example-card:not(:hover) {
+    transform: scale(0.98);
+    filter: grayscale(1);
+  }
+
+  .example-card {
+    min-width: 24rem;
+    transition: all 400ms;
+    animation: fadeIn 500ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .example-header-image {
+      background-image: url('../../../assets/icon.jpg');
+      background-size: cover;
+    }
+
+    .delete__button {
+      @include flexible($align: flex-start, $justify: center);
+      font-size: 1.375rem;
+      margin-left: auto;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 400ms;
+      padding: .275rem;
+
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+}
+
+.forms__section {
+  @include flexible($direction: column);
+  gap: 1.375rem;
+  width: 50%;
+  animation: fadeIn 500ms ease-in-out;
+  background-color: $white;
+  padding: 3.375rem 1.375rem;
+  border-radius: .475rem;
+
+  > .people__form {
+    @include flexible($direction: column);
+    gap: .375rem;
+    width: 100%;
+
+    > .form__field {
+      width: 80%;
+    }
+
+    > .form__button {
+      width: 50%;
+      font-size: 1.125rem;
+      padding: 1.375rem .775rem;
+    }
+  }
+}
+
+.people__title {
+  font-size: 1.875rem;
+  color: $light-green;
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
