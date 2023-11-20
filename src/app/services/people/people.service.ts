@@ -17,7 +17,7 @@ export class PeopleService {
   getPeople(): Observable<People[]> {
     return this.http.get<People[]>(this.baseUrl)
                     .pipe(
-                      delay(2000)
+                      delay(1000)
                     )
   }
 
