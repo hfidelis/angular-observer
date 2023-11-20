@@ -1,5 +1,5 @@
 export interface People {
-  id: number;
-  name: string;
-  role: string;
+  id: number | string ;
+  name: string | null | undefined;
+  role: string | null | undefined;
 }
