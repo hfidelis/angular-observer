@@ -97,10 +97,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('oioi')
-
     if (this.peopleForm.valid) {
-      console.log(this.name.value, this.role.value)
       const value: People = {
         id: '',
         name: this.name.value,
