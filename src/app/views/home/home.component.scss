@@ -90,6 +90,12 @@ main {
   font-weight: 700;
 }
 
+.error__message {
+  font-size: 1.875rem;
+  color: $red;
+  font-weight: 700;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

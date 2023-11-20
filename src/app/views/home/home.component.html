@@ -44,8 +44,14 @@
           Nenhuma pessoa cadastrada.
         </h2>
       }
+    } @else if (requestError) {
+      <h2
+        class="error__message"
+      >
+        Erro ao requisitar dados
+      </h2>
     } @else {
-      <app-spinner />
+     <app-spinner />
     }
   </section>
 

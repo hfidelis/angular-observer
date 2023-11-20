@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { faTrashCan, faLayerGroup, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
@@ -34,12 +34,14 @@ import { PeopleService } from '../../services/people/people.service';
 export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
-    this.people$ = this.peopleService.getPeople();
+    this.people$ = this.fetchPeople();
   }
 
   peopleService = inject(PeopleService)
 
   people$!: Observable<People[]>;
+
+  requestError: Boolean = false;
 
   faTrashCan = faTrashCan;
   faLayerGroup = faLayerGroup;
@@ -90,11 +92,21 @@ export class HomeComponent implements OnInit {
     return this.role.hasError('required') ? 'Insira um cargo!' : '';
   }
 
+  fetchPeople() {
+    return this.peopleService.getPeople()
+                             .pipe(
+                              catchError(() => {
+                                this.requestError = true;
+                                return [];
+                              })
+                             )
+  }
+
   remove(id: number | string): void {
     this.peopleService.deletePeople(id)
                       .subscribe({
                         next: () => {
-                          this.people$ = this.peopleService.getPeople();
+                          this.people$ = this.fetchPeople();
                         }
                       })
 
