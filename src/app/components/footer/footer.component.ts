@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleGroup, faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   template: `
@@ -17,10 +17,14 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
           />
           <span>Equipe</span>
         </div>
-        <span>Heitor Fidelis</span>
-        <span>Matheus Vinícius</span>
-        <span>Tulio Baruk</span>
-        <span>Thyago Silva</span>
+        <div
+          class="footer__team"
+        >
+          <span> <fa-icon [icon]="faCircleUser" />  Heitor Fidelis</span>
+          <span> <fa-icon [icon]="faCircleUser" /> Matheus Vinícius</span>
+          <span> <fa-icon [icon]="faCircleUser" /> Tulio Baruk</span>
+          <span> <fa-icon [icon]="faCircleUser" /> Thyago Silva</span>
+        </div>
       </div>
     </footer>
   `,
@@ -31,7 +35,8 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
   footer {
     @include flexible();
     padding: 1.375rem 0;
-    background-color: $dark-green;
+    background-color: $black;
+    min-height: 12vh;
 
     > .footer__container {
       @include flexible($direction: column,);
@@ -45,9 +50,14 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
         font-weight: 700;
       }
 
-      > span {
-        font-weight: 600;
-        font-style: italic;
+      > .footer__team {
+        @include flexible();
+        gap: 1.125rem;
+
+        > span {
+          font-weight: 600;
+          font-style: italic;
+        }
       }
     }
   }
@@ -61,4 +71,5 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
   faPeopleGroup = faPeopleGroup;
+  faCircleUser = faCircleUser;
 }

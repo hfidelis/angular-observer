@@ -9,7 +9,7 @@ import { faHurricane } from '@fortawesome/free-solid-svg-icons';
       <fa-icon
         [icon]=faHurricane
       />
-      <span>Observables</span>
+      <span>Observable - Design Pattern</span>
     </header>
   `,
   styles: `
@@ -19,14 +19,14 @@ import { faHurricane } from '@fortawesome/free-solid-svg-icons';
   header {
     @include flexible(
       $align: center,
-      $justify: start
+      $justify: center
     );
-
-    gap: .375rem;
-    font-size: 1.375rem;
+    min-height: 10vh;
+    gap: .575rem;
+    font-size: 1.875rem;
     font-weight: 700;
-    padding: .875rem 1.375rem;
-    background-color: $dark-green;
+    padding: .875rem 2.375rem;
+    background-color: $black;
     color: $white;
   }
   `,
