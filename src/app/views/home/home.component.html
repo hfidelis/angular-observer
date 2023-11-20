@@ -7,6 +7,7 @@
         class="people__title"
       >
         Pessoas
+        <fa-icon [icon]="faLayerGroup"/>
       </h2>
       @for (people of peoples; track people.id) {
         <mat-card
@@ -55,6 +56,7 @@
       class="people__title"
     >
       Cadastro
+      <fa-icon [icon]="faIdCard" />
     </h2>
 
     <form

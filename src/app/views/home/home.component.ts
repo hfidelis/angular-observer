@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Observable } from 'rxjs';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faLayerGroup, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { People } from '../../models/People.model';
@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   people$!: Observable<People[]>;
 
   faTrashCan = faTrashCan;
+  faLayerGroup = faLayerGroup;
+  faIdCard = faIdCard;
 
   roleOptions: string[] = [
     'Developer',
