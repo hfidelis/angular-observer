@@ -2,6 +2,11 @@
   <section
     class="peoples__section"
   >
+    <span
+      class="time__span"
+    >
+      {{ time$ | async | date: 'dd/MM/yyyy HH:mm:ss' }}
+    </span>
     @if (people$ | async; as peoples) {
       <h2
         class="people__title"

@@ -7,8 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faIdCard, faLayerGroup, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { catchError, Observable } from 'rxjs';
-import { faTrashCan, faLayerGroup, faIdCard } from '@fortawesome/free-solid-svg-icons';
 
 import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { People } from '../../models/People.model';
@@ -37,8 +37,15 @@ export class HomeComponent implements OnInit {
     this.people$ = this.fetchPeople();
   }
 
-  peopleService = inject(PeopleService)
   people$!: Observable<People[]>;
+  time$: Observable<string> = new Observable<string>(observer => {
+    setInterval(() => {
+      const date = new Date().toString();
+      observer.next(date)
+    }, 1000);
+  });
+
+  peopleService = inject(PeopleService)
   requestError: Boolean = false;
   faTrashCan = faTrashCan;
   faLayerGroup = faLayerGroup;
