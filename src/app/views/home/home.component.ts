@@ -38,11 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   peopleService = inject(PeopleService)
-
   people$!: Observable<People[]>;
-
   requestError: Boolean = false;
-
   faTrashCan = faTrashCan;
   faLayerGroup = faLayerGroup;
   faIdCard = faIdCard;
@@ -126,7 +123,7 @@ export class HomeComponent implements OnInit {
       this.peopleService.addPeople(value)
                         .subscribe({
                           next: () => {
-                            this.people$ = this.peopleService.getPeople();
+                            this.people$ = this.fetchPeople();
                           }
                         })
     }
