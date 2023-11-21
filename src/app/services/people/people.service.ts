@@ -21,16 +21,8 @@ export class PeopleService {
                     )
   }
 
-  getPeopleById(id: number | string): Observable<People> | undefined {
-    return this.http.get<People>(`${this.baseUrl}/${id}`)
-  }
-
   addPeople(people: People): Observable<People> {
     return this.http.post<People>(this.baseUrl, people)
-  }
-
-  updatePeople(people: People): Observable<People> {
-    return this.http.patch<People>(`${this.baseUrl}/${people.id}`, people)
   }
 
   deletePeople(id: number | string): Observable<People> {
