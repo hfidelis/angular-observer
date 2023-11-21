@@ -37,7 +37,10 @@ export class HomeComponent implements OnInit {
     this.people$ = this.fetchPeople();
   }
 
+  peopleService = inject(PeopleService)
+
   people$!: Observable<People[]>;
+
   time$: Observable<string> = new Observable<string>(observer => {
     setInterval(() => {
       const date = new Date().toString();
@@ -45,7 +48,6 @@ export class HomeComponent implements OnInit {
     }, 1000);
   });
 
-  peopleService = inject(PeopleService)
   requestError: Boolean = false;
   faTrashCan = faTrashCan;
   faLayerGroup = faLayerGroup;
