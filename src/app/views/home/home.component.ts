@@ -35,6 +35,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.people$ = this.fetchPeople();
+
+    this.name.valueChanges.subscribe({
+      next: (value) => {
+        console.log(value, 'Meu valor mudou!')
+      }
+    })
   }
 
   peopleService = inject(PeopleService)
@@ -85,8 +91,6 @@ export class HomeComponent implements OnInit {
   }
 
   getNameErrorMessage(): string {
-    console.log(this.name.errors)
-
     if (this.name.hasError('required')) {
       return 'Insira um nome!';
     }

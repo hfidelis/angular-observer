@@ -5,7 +5,11 @@
     <span
       class="time__span"
     >
-      {{ time$ | async | date: 'dd/MM/yyyy HH:mm:ss' }}
+      @if (time$ | async; as time) {
+        {{ time$ | async | date: 'dd/MM/yyyy HH:mm:ss' }}
+      } @else {
+       {{ 'Carregando...' }}
+      }
     </span>
     @if (people$ | async; as peoples) {
       <h2
