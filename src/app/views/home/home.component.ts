@@ -33,6 +33,10 @@ import { PeopleService } from '../../services/people/people.service';
 })
 export class HomeComponent implements OnInit {
 
+  constructor(
+    private peopleService: PeopleService,
+  ) { }
+
   ngOnInit(): void {
     this.people$ = this.fetchPeople();
 
@@ -42,8 +46,6 @@ export class HomeComponent implements OnInit {
       }
     })
   }
-
-  peopleService = inject(PeopleService)
 
   people$!: Observable<People[]>;
 
